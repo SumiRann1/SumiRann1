@@ -1,4 +1,119 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="120">
-<rect width="100%" height="100%" fill="#0D1117"/>
-<text x="50%" y="55%" fill="#A855F7" font-size="42" text-anchor="middle" font-family="Arial">AI</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 160" width="100%" height="100%">
+  <defs>
+    <style type="text/css">
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap');
+      .sans-title {
+        font-family: 'Inter', sans-serif;
+        font-weight: 700;
+        fill: #F3F4F6;
+      }
+      .sans-desc {
+        font-family: 'Inter', sans-serif;
+        font-weight: 400;
+        fill: #94A3B8;
+      }
+      .tech-badge {
+        font-family: 'JetBrains Mono', monospace;
+        font-weight: 700;
+        font-size: 11px;
+        fill: #C084FC;
+      }
+      .badge-bg {
+        fill: #7C3AED;
+        fill-opacity: 0.15;
+        stroke: #A855F7;
+        stroke-opacity: 0.4;
+        stroke-width: 1;
+      }
+    </style>
+    
+    <linearGradient id="border-glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#A855F7" stop-opacity="0.8"/>
+      <stop offset="30%" stop-color="#7C3AED" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#0D1117" stop-opacity="0.1"/>
+    </linearGradient>
+
+    <radialGradient id="left-glow" cx="10%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#7C3AED" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#0D1117" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Card Background -->
+  <rect x="2" y="2" width="1196" height="156" rx="8" fill="#0D1117" stroke="url(#border-glow)" stroke-width="1.5"/>
+  <rect x="2" y="2" width="1196" height="156" rx="8" fill="url(#left-glow)" />
+
+  <!-- Right Side: Workflow/LangGraph Graphic -->
+  <g stroke="#7C3AED" stroke-width="1.5" fill="none" opacity="0.4" transform="translate(980, 25)">
+    <!-- Paths / Nodes of LangGraph agent loop -->
+    <!-- Start node to Agent -->
+    <path d="M 20 50 Q 50 15 80 15" />
+    <path d="M 80 15 Q 110 50 140 50" />
+    <path d="M 140 50 Q 110 85 80 85" />
+    <path d="M 80 85 Q 50 50 20 50" />
+    
+    <!-- Nodes -->
+    <circle cx="20" cy="50" r="8" fill="#7C3AED" stroke="none" />
+    <circle cx="80" cy="15" r="14" fill="#0D1117" stroke="#A855F7" stroke-width="2"/>
+    <circle cx="140" cy="50" r="14" fill="#0D1117" stroke="#A855F7" stroke-width="2"/>
+    <circle cx="80" cy="85" r="14" fill="#0D1117" stroke="#A855F7" stroke-width="2"/>
+    
+    <!-- Arrows & Indicators -->
+    <polygon points="55,20 48,15 48,25" fill="#7C3AED" stroke="none"/>
+    <polygon points="105,25 103,15 113,18" fill="#7C3AED" stroke="none"/>
+    <polygon points="110,75 113,85 103,82" fill="#7C3AED" stroke="none"/>
+    <polygon points="50,75 48,65 55,70" fill="#7C3AED" stroke="none"/>
+
+    <!-- Labels inside nodes -->
+    <text font-family="JetBrains Mono" font-size="8" font-weight="bold" fill="#F3F4F6" x="80" y="18" text-anchor="middle" stroke="none">AGNT</text>
+    <text font-family="JetBrains Mono" font-size="8" font-weight="bold" fill="#C084FC" x="140" y="53" text-anchor="middle" stroke="none">TOOL</text>
+    <text font-family="JetBrains Mono" font-size="8" font-weight="bold" fill="#C084FC" x="80" y="88" text-anchor="middle" stroke="none">EVAL</text>
+  </g>
+
+  <!-- Left Icon: Interconnected AI nodes/gears -->
+  <g transform="translate(50, 80)">
+    <circle cx="0" cy="0" r="22" fill="none" stroke="#7C3AED" stroke-width="2" opacity="0.3"/>
+    <!-- Atom/Network core -->
+    <ellipse cx="0" cy="0" rx="14" ry="5" fill="none" stroke="#A855F7" stroke-width="1.5" transform="rotate(30)" opacity="0.8"/>
+    <ellipse cx="0" cy="0" rx="14" ry="5" fill="none" stroke="#A855F7" stroke-width="1.5" transform="rotate(90)" opacity="0.8"/>
+    <ellipse cx="0" cy="0" rx="14" ry="5" fill="none" stroke="#A855F7" stroke-width="1.5" transform="rotate(150)" opacity="0.8"/>
+    <circle cx="0" cy="0" r="4.5" fill="#C084FC"/>
+  </g>
+
+  <!-- Project Info -->
+  <g transform="translate(120, 48)">
+    <!-- Title -->
+    <text class="sans-title" x="0" y="0" font-size="24" letter-spacing="1">AI-PLAYGROUND</text>
+    <text class="sans-desc" x="195" y="-2" font-size="13" opacity="0.8">// LLM Workflows &amp; Agentic AI</text>
+    
+    <!-- Description -->
+    <text class="sans-desc" x="0" y="32" font-size="14">Experiments in building stateful multi-agent architectures, persistent memory loops, structured tool-calling, and custom reasoning flows using LangGraph and LangChain.</text>
+
+    <!-- Badges -->
+    <g transform="translate(0, 56)">
+      <!-- LangChain -->
+      <rect class="badge-bg" x="0" y="0" width="95" height="22" rx="4" />
+      <text class="tech-badge" x="47.5" y="15" text-anchor="middle">LANGCHAIN</text>
+
+      <!-- LangGraph -->
+      <rect class="badge-bg" x="105" y="0" width="95" height="22" rx="4" />
+      <text class="tech-badge" x="152.5" y="15" text-anchor="middle">LANGGRAPH</text>
+
+      <!-- LLMs -->
+      <rect class="badge-bg" x="210" y="0" width="55" height="22" rx="4" />
+      <text class="tech-badge" x="237.5" y="15" text-anchor="middle">LLMS</text>
+
+      <!-- Workflows -->
+      <rect class="badge-bg" x="275" y="0" width="100" height="22" rx="4" />
+      <text class="tech-badge" x="325" y="15" text-anchor="middle">WORKFLOWS</text>
+    </g>
+  </g>
+
+  <!-- Right side stats/details badge -->
+  <g transform="translate(900, 45)" opacity="0.8">
+    <rect x="0" y="0" width="240" height="70" rx="6" fill="#090A0F" stroke="#7C3AED" stroke-width="1" opacity="0.6"/>
+    <!-- Details -->
+    <text class="tech-badge" x="20" y="25" font-size="12">EXPERIMENTS: Active</text>
+    <text class="sans-desc" x="20" y="48" font-size="11" fill="#C084FC">Structured reasoning loops</text>
+  </g>
 </svg>

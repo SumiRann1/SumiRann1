@@ -1,4 +1,101 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="120">
-<rect width="100%" height="100%" fill="#0D1117"/>
-<text x="50%" y="55%" fill="#A855F7" font-size="42" text-anchor="middle" font-family="Arial">Timeline</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 180" width="100%" height="100%">
+  <defs>
+    <style type="text/css">
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@700&amp;display=swap');
+      .step-title {
+        font-family: 'Inter', sans-serif;
+        font-weight: 700;
+        font-size: 13px;
+        fill: #F3F4F6;
+      }
+      .step-desc {
+        font-family: 'Inter', sans-serif;
+        font-weight: 500;
+        font-size: 11px;
+        fill: #94A3B8;
+      }
+      .node-num {
+        font-family: 'JetBrains Mono', monospace;
+        font-weight: 700;
+        font-size: 12px;
+        fill: #C084FC;
+      }
+      .line-glow {
+        filter: url(#glow);
+      }
+    </style>
+
+    <filter id="glow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <linearGradient id="timeline-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7C3AED" stop-opacity="0.3"/>
+      <stop offset="25%" stop-color="#A855F7" stop-opacity="1"/>
+      <stop offset="75%" stop-color="#C084FC" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#7C3AED" stop-opacity="0.3"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background Card -->
+  <rect width="100%" height="100%" fill="#0D1117" rx="8" stroke="#7C3AED" stroke-opacity="0.15" stroke-width="1"/>
+
+  <!-- Horizontal Timeline Bar -->
+  <line x1="100" y1="90" x2="1100" y2="90" stroke="url(#timeline-grad)" stroke-width="3" class="line-glow"/>
+
+  <!-- ==================== STEP 1: FUNDAMENTALS ==================== -->
+  <g transform="translate(120, 90)">
+    <!-- Node -->
+    <circle cx="0" cy="0" r="16" fill="#0D1117" stroke="#7C3AED" stroke-width="2.5" class="line-glow"/>
+    <text class="node-num" x="0" y="4" text-anchor="middle">01</text>
+    <!-- Text Labels -->
+    <text class="step-title" x="0" y="-30" text-anchor="middle">FUNDAMENTALS</text>
+    <text class="step-desc" x="0" y="32" text-anchor="middle">Python, SQL, Linux</text>
+    <text class="step-desc" x="0" y="48" text-anchor="middle">Engineering Basics</text>
+  </g>
+
+  <!-- ==================== STEP 2: BACKEND & APIS ==================== -->
+  <g transform="translate(360, 90)">
+    <!-- Node -->
+    <circle cx="0" cy="0" r="16" fill="#0D1117" stroke="#A855F7" stroke-width="2.5" class="line-glow"/>
+    <text class="node-num" x="0" y="4" text-anchor="middle">02</text>
+    <!-- Text Labels -->
+    <text class="step-title" x="0" y="-30" text-anchor="middle">BACKEND DEV</text>
+    <text class="step-desc" x="0" y="32" text-anchor="middle">Flask, FastAPI, Firebase</text>
+    <text class="step-desc" x="0" y="48" text-anchor="middle">LostLinks Platform</text>
+  </g>
+
+  <!-- ==================== STEP 3: DSA & CONTESTS ==================== -->
+  <g transform="translate(600, 90)">
+    <!-- Node -->
+    <circle cx="0" cy="0" r="18" fill="#0D1117" stroke="#C084FC" stroke-width="3" class="line-glow"/>
+    <text class="node-num" x="0" y="4" text-anchor="middle" fill="#F3F4F6">03</text>
+    <!-- Text Labels -->
+    <text class="step-title" x="0" y="-30" text-anchor="middle" fill="#C084FC">DSA JOURNEY</text>
+    <text class="step-desc" x="0" y="32" text-anchor="middle">Modern C++, Codeforces</text>
+    <text class="step-desc" x="0" y="48" text-anchor="middle">500+ Problems Target</text>
+  </g>
+
+  <!-- ==================== STEP 4: AI AGENTS ==================== -->
+  <g transform="translate(840, 90)">
+    <!-- Node -->
+    <circle cx="0" cy="0" r="16" fill="#0D1117" stroke="#A855F7" stroke-width="2.5" class="line-glow"/>
+    <text class="node-num" x="0" y="4" text-anchor="middle">04</text>
+    <!-- Text Labels -->
+    <text class="step-title" x="0" y="-30" text-anchor="middle">AI WORKFLOWS</text>
+    <text class="step-desc" x="0" y="32" text-anchor="middle">LangGraph, LangChain</text>
+    <text class="step-desc" x="0" y="48" text-anchor="middle">AI-Playground Labs</text>
+  </g>
+
+  <!-- ==================== STEP 5: SCALE ==================== -->
+  <g transform="translate(1080, 90)">
+    <!-- Node -->
+    <circle cx="0" cy="0" r="16" fill="#0D1117" stroke="#7C3AED" stroke-width="2.5" class="line-glow"/>
+    <text class="node-num" x="0" y="4" text-anchor="middle">05</text>
+    <!-- Text Labels -->
+    <text class="step-title" x="0" y="-30" text-anchor="middle">SYSTEM DESIGN</text>
+    <text class="step-desc" x="0" y="32" text-anchor="middle">Scalability, Patterns</text>
+    <text class="step-desc" x="0" y="48" text-anchor="middle">Open Source Contribs</text>
+  </g>
 </svg>

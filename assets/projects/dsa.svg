@@ -1,4 +1,108 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="120">
-<rect width="100%" height="100%" fill="#0D1117"/>
-<text x="50%" y="55%" fill="#A855F7" font-size="42" text-anchor="middle" font-family="Arial">DSA</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 160" width="100%" height="100%">
+  <defs>
+    <style type="text/css">
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap');
+      .sans-title {
+        font-family: 'Inter', sans-serif;
+        font-weight: 700;
+        fill: #F3F4F6;
+      }
+      .sans-desc {
+        font-family: 'Inter', sans-serif;
+        font-weight: 400;
+        fill: #94A3B8;
+      }
+      .tech-badge {
+        font-family: 'JetBrains Mono', monospace;
+        font-weight: 700;
+        font-size: 11px;
+        fill: #C084FC;
+      }
+      .badge-bg {
+        fill: #7C3AED;
+        fill-opacity: 0.15;
+        stroke: #A855F7;
+        stroke-opacity: 0.4;
+        stroke-width: 1;
+      }
+    </style>
+    
+    <linearGradient id="border-glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#A855F7" stop-opacity="0.8"/>
+      <stop offset="30%" stop-color="#7C3AED" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#0D1117" stop-opacity="0.1"/>
+    </linearGradient>
+
+    <radialGradient id="left-glow" cx="10%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#7C3AED" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#0D1117" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Card Background -->
+  <rect x="2" y="2" width="1196" height="156" rx="8" fill="#0D1117" stroke="url(#border-glow)" stroke-width="1.5"/>
+  <rect x="2" y="2" width="1196" height="156" rx="8" fill="url(#left-glow)" />
+
+  <!-- Right Side: Binary Tree Graphic -->
+  <g stroke="#7C3AED" stroke-width="1.5" fill="none" opacity="0.4" transform="translate(1000, 30)">
+    <!-- Branches -->
+    <line x1="50" y1="20" x2="20" y2="70" />
+    <line x1="50" y1="20" x2="80" y2="70" />
+    
+    <!-- Nodes -->
+    <circle cx="50" cy="20" r="16" fill="#0D1117" stroke="#A855F7" stroke-width="2"/>
+    <circle cx="20" cy="70" r="14" fill="#0D1117" stroke="#7C3AED" stroke-width="1.5"/>
+    <circle cx="80" cy="70" r="14" fill="#0D1117" stroke="#7C3AED" stroke-width="1.5"/>
+    
+    <!-- Text values inside nodes -->
+    <text font-family="JetBrains Mono" font-size="10" font-weight="bold" fill="#F3F4F6" x="50" y="24" text-anchor="middle" stroke="none">42</text>
+    <text font-family="JetBrains Mono" font-size="9" font-weight="bold" fill="#C084FC" x="20" y="73" text-anchor="middle" stroke="none">17</text>
+    <text font-family="JetBrains Mono" font-size="9" font-weight="bold" fill="#C084FC" x="80" y="73" text-anchor="middle" stroke="none">99</text>
+  </g>
+
+  <!-- Left Icon: Code tag logic symbol -->
+  <g transform="translate(50, 80)">
+    <circle cx="0" cy="0" r="22" fill="none" stroke="#7C3AED" stroke-width="2" opacity="0.3"/>
+    <!-- Code Bracket Motif -->
+    <path d="M -8 -8 L -15 0 L -8 8 M 8 -8 L 15 0 L 8 8" fill="none" stroke="#A855F7" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="-3" y1="10" x2="3" y2="-10" stroke="#C084FC" stroke-width="2.5" stroke-linecap="round"/>
+  </g>
+
+  <!-- Project Info -->
+  <g transform="translate(120, 48)">
+    <!-- Title -->
+    <text class="sans-title" x="0" y="0" font-size="24" letter-spacing="1">DSA-JOURNEY</text>
+    <text class="sans-desc" x="175" y="-2" font-size="13" opacity="0.8">// Algorithms &amp; Competitive Programming</text>
+    
+    <!-- Description -->
+    <text class="sans-desc" x="0" y="32" font-size="14">Structured notes, clean C++ templates, design patterns, and efficient implementations of algorithms for platform prep and Codeforces training.</text>
+
+    <!-- Badges -->
+    <g transform="translate(0, 56)">
+      <!-- C++ -->
+      <rect class="badge-bg" x="0" y="0" width="55" height="22" rx="4" />
+      <text class="tech-badge" x="27.5" y="15" text-anchor="middle">C++</text>
+
+      <!-- Algorithms -->
+      <rect class="badge-bg" x="65" y="0" width="100" height="22" rx="4" />
+      <text class="tech-badge" x="115" y="15" text-anchor="middle">ALGORITHMS</text>
+
+      <!-- Data Structures -->
+      <rect class="badge-bg" x="175" y="0" width="130" height="22" rx="4" />
+      <text class="tech-badge" x="240" y="15" text-anchor="middle">DATA STRUCTURES</text>
+
+      <!-- Codeforces -->
+      <rect class="badge-bg" x="315" y="0" width="100" height="22" rx="4" />
+      <text class="tech-badge" x="365" y="15" text-anchor="middle">CODEFORCES</text>
+    </g>
+  </g>
+
+  <!-- Right side stats/details badge -->
+  <g transform="translate(900, 45)" opacity="0.8">
+    <!-- Card inside card -->
+    <rect x="0" y="0" width="240" height="70" rx="6" fill="#090A0F" stroke="#7C3AED" stroke-width="1" opacity="0.6"/>
+    <!-- Details -->
+    <text class="tech-badge" x="20" y="25" font-size="12">REPOSITORY: Public</text>
+    <text class="sans-desc" x="20" y="48" font-size="11" fill="#C084FC">Topic notes &amp; CF contest solutions</text>
+  </g>
 </svg>

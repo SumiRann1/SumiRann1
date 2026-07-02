@@ -1,0 +1,178 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500" width="100%" height="100%">
+  <defs>
+    <!-- Import Google Fonts -->
+    <style type="text/css">
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap');
+      
+      .term-text {
+        font-family: 'JetBrains Mono', monospace;
+      }
+      .sans-text {
+        font-family: 'Inter', sans-serif;
+      }
+      .glow-node {
+        filter: url(#glow);
+      }
+    </style>
+
+    <!-- Filters and Gradients -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <radialGradient id="bg-glow" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#7C3AED" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#0D1117" stop-opacity="0"/>
+    </radialGradient>
+
+    <radialGradient id="center-flare" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#C084FC" stop-opacity="0.8"/>
+      <stop offset="20%" stop-color="#A855F7" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#7C3AED" stop-opacity="0"/>
+    </radialGradient>
+
+    <linearGradient id="line-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#A855F7" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#A855F7" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#A855F7" stop-opacity="0"/>
+    </linearGradient>
+
+    <linearGradient id="node-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#C084FC"/>
+      <stop offset="100%" stop-color="#6D28D9"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="#0D1117"/>
+  <rect width="100%" height="100%" fill="url(#bg-glow)"/>
+
+  <!-- Left Side: Graph Network -->
+  <g stroke="#7C3AED" stroke-width="1.5" opacity="0.35">
+    <line x1="150" y1="150" x2="80" y2="200" />
+    <line x1="150" y1="150" x2="220" y2="180" />
+    <line x1="150" y1="150" x2="120" y2="270" />
+    <line x1="80" y1="200" x2="120" y2="270" />
+    <line x1="80" y1="200" x2="110" y2="450" />
+    <line x1="220" y1="180" x2="280" y2="260" />
+    <line x1="220" y1="180" x2="170" y2="340" />
+    <line x1="120" y1="270" x2="280" y2="260" />
+    <line x1="120" y1="270" x2="170" y2="340" />
+    <line x1="120" y1="270" x2="110" y2="450" />
+    <line x1="280" y1="260" x2="170" y2="340" />
+    <line x1="280" y1="260" x2="220" y2="420" />
+    <line x1="170" y1="340" x2="220" y2="420" />
+    <line x1="220" y1="420" x2="110" y2="450" />
+    <!-- Additional outer connections -->
+    <line x1="150" y1="150" x2="280" y2="120" opacity="0.2"/>
+    <line x1="280" y1="260" x2="350" y2="300" opacity="0.2"/>
+    <line x1="220" y1="420" x2="300" y2="460" opacity="0.2"/>
+  </g>
+
+  <!-- Left Side: Nodes -->
+  <g fill="url(#node-grad)">
+    <circle cx="150" cy="150" r="6" class="glow-node"/>
+    <circle cx="80" cy="200" r="5"/>
+    <circle cx="220" cy="180" r="5"/>
+    <circle cx="120" cy="270" r="6" class="glow-node"/>
+    <circle cx="280" cy="260" r="5"/>
+    <circle cx="170" cy="340" r="6" class="glow-node"/>
+    <circle cx="220" cy="420" r="5"/>
+    <circle cx="110" cy="450" r="5"/>
+  </g>
+
+  <!-- Decorative Dot Matrix (Bottom Left) -->
+  <g fill="#94A3B8" opacity="0.15">
+    <circle cx="80" cy="370" r="2"/>
+    <circle cx="95" cy="370" r="2"/>
+    <circle cx="110" cy="370" r="2"/>
+    <circle cx="125" cy="370" r="2"/>
+    
+    <circle cx="80" cy="385" r="2"/>
+    <circle cx="95" cy="385" r="2"/>
+    <circle cx="110" cy="385" r="2"/>
+    <circle cx="125" cy="385" r="2"/>
+    
+    <circle cx="80" cy="400" r="2"/>
+    <circle cx="95" cy="400" r="2"/>
+    <circle cx="110" cy="400" r="2"/>
+    <circle cx="125" cy="400" r="2"/>
+
+    <circle cx="80" cy="415" r="2"/>
+    <circle cx="95" cy="415" r="2"/>
+    <circle cx="110" cy="415" r="2"/>
+    <circle cx="125" cy="415" r="2"/>
+  </g>
+
+  <!-- Top Left: Terminal Prompt -->
+  <g class="term-text" transform="translate(80, 80)">
+    <text x="0" y="0" fill="#A855F7" font-size="24" font-weight="bold">&gt;_</text>
+    <text x="35" y="-3" fill="#94A3B8" font-size="13" opacity="0.6">// keep building</text>
+  </g>
+
+  <!-- Top Center: Code Hexagon and Line -->
+  <g stroke="#7C3AED" stroke-width="1" opacity="0.4">
+    <line x1="420" y1="85" x2="570" y2="85" />
+    <line x1="630" y1="85" x2="780" y2="85" />
+    <circle cx="420" cy="85" r="3" fill="#7C3AED"/>
+    <circle cx="780" cy="85" r="3" fill="#7C3AED"/>
+  </g>
+  <g transform="translate(600, 85)">
+    <!-- Hexagon path -->
+    <path d="M 0 -22 L 19 -11 L 19 11 L 0 22 L -19 11 L -19 -11 Z" fill="#0D1117" stroke="#A855F7" stroke-width="1.5"/>
+    <text class="term-text" x="0" y="4" fill="#C084FC" font-size="13" text-anchor="middle" font-weight="bold">&lt;/&gt;</text>
+  </g>
+
+  <!-- Right Side: Binary Grid -->
+  <g class="term-text" font-size="12" fill="#94A3B8" opacity="0.18" text-anchor="end">
+    <text x="1120" y="90">0101010100101</text>
+    <text x="1120" y="108">1010101001010</text>
+    <text x="1120" y="126">0101010100101</text>
+  </g>
+
+  <!-- Right Side: Circuit Traces -->
+  <g stroke="#7C3AED" stroke-width="1.5" fill="none" opacity="0.25">
+    <path d="M 1120 200 L 1070 200 L 1040 230 L 980 230" />
+    <path d="M 1120 280 L 1090 280 L 1060 250 L 1020 250" />
+    <path d="M 1120 340 L 1060 340 L 1030 310 L 950 310" />
+    <circle cx="980" cy="230" r="2.5" fill="#7C3AED"/>
+    <circle cx="1020" cy="250" r="2.5" fill="#7C3AED"/>
+    <circle cx="950" cy="310" r="2.5" fill="#7C3AED"/>
+  </g>
+
+  <!-- Center Title: SUMIRAN AKRE -->
+  <text class="sans-text" x="600" y="195" font-size="54" font-weight="800" fill="#F3F4F6" text-anchor="middle" letter-spacing="14">SUMIRAN AKRE</text>
+
+  <!-- Central Glowing Line -->
+  <line x1="300" y1="240" x2="900" y2="240" stroke="url(#line-grad)" stroke-width="2"/>
+  <ellipse cx="600" cy="240" rx="30" ry="3" fill="url(#center-flare)"/>
+
+  <!-- Subtitle -->
+  <text class="sans-text" x="600" y="295" font-size="18" font-weight="500" fill="#C084FC" text-anchor="middle" letter-spacing="3">Computer Science Undergraduate</text>
+
+  <!-- Sub-subtitle -->
+  <text class="sans-text" x="600" y="340" font-size="22" font-weight="600" fill="#F3F4F6" text-anchor="middle" letter-spacing="0.5">Building Practical Software &amp; AI Applications</text>
+
+  <!-- Pill Container -->
+  <rect x="360" y="380" width="480" height="46" rx="23" fill="none" stroke="#7C3AED" stroke-width="1.5" opacity="0.5" />
+  <text class="sans-text" x="600" y="408" font-size="15" font-weight="500" fill="#E2E8F0" text-anchor="middle" letter-spacing="0.8">
+    Learning C++ <tspan fill="#A855F7"> • </tspan> DSA <tspan fill="#A855F7"> • </tspan> Competitive Programming
+  </text>
+
+  <!-- Bottom Right: Commit History Graphic -->
+  <g transform="translate(860, 410)">
+    <!-- Commit history labels -->
+    <text class="term-text" x="140" y="32" fill="#94A3B8" font-size="11" opacity="0.5" text-anchor="end">commit history</text>
+    
+    <!-- Squares represent Git activity -->
+    <rect x="30" y="5" width="12" height="12" rx="2" fill="#7C3AED" opacity="0.3" />
+    <rect x="46" y="5" width="12" height="12" rx="2" fill="#7C3AED" opacity="0.8" />
+    <rect x="62" y="5" width="12" height="12" rx="2" fill="#7C3AED" opacity="0.2" />
+    <rect x="78" y="5" width="12" height="12" rx="2" fill="#7C3AED" opacity="0.9" />
+    <rect x="94" y="5" width="12" height="12" rx="2" fill="#7C3AED" opacity="0.5" />
+    <rect x="110" y="5" width="12" height="12" rx="2" fill="#7C3AED" opacity="0.1" />
+    <rect x="126" y="5" width="12" height="12" rx="2" fill="#7C3AED" opacity="0.7" />
+    <rect x="142" y="5" width="12" height="12" rx="2" fill="#7C3AED" opacity="0.4" />
+  </g>
+</svg>
