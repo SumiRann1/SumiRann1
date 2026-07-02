@@ -1,5 +1,5 @@
 
-# Building Software. Solving Problems. Sharing the Journey.
+# Building Software ▪️ Solving Problems ▪️ Sharing the Journey.
 
 <p align="center">
   <img src="./assets/banner.svg" alt="Banner" width="100%">
@@ -97,9 +97,9 @@ I'm currently strengthening my engineering foundations through Modern C++, DSA a
 
 - **GitHub**: [github.com/SumiRann1](https://github.com/SumiRann1)
 - **Codeforces**: [codeforces.com/profile/SumiRann1](https://codeforces.com/profile/SumiRann1)
-- **LinkedIn**: *(add your profile)*
-- **Email**: *(add your email)*
+<!-- **LinkedIn**: *(add your profile)*
+- **Email**: *(add your email)*-->
 
 <img src="./assets/divider.svg" width="100%" />
 
-> **Building. Learning. Improving. See you in the next commit.**
+> **Building ▪️ Learning ▪️ Improving ▪️ See you in the next commit.**
