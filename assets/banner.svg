@@ -2,7 +2,7 @@
   <defs>
     <!-- Import Google Fonts -->
     <style type="text/css">
-      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap');
       
       .term-text {
         font-family: 'JetBrains Mono', monospace;
@@ -12,167 +12,357 @@
       }
       .glow-node {
         filter: url(#glow);
+        animation: pulse 3s ease-in-out infinite;
       }
+      .glow-text {
+        filter: url(#text-glow);
+      }
+      
+      @keyframes blink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0; }
+      }
+      
+      @keyframes pulse {
+        0%, 100% { opacity: 0.6; }
+        50% { opacity: 1; }
+      }
+      
+      @keyframes signal-flow {
+        to {
+          stroke-dashoffset: -20;
+        }
+      }
+      
+      .cursor-blink {
+        animation: blink 1s step-end infinite;
+      }
+      
+      .flow-path {
+        stroke-dasharray: 5, 5;
+        animation: signal-flow 1s linear infinite;
+      }
+
+      /* Out-of-phase pulsing nodes */
+      .glow-node-1 {
+        filter: url(#glow);
+        animation: pulse-1 4s ease-in-out infinite;
+      }
+      .glow-node-2 {
+        filter: url(#glow);
+        animation: pulse-2 4s ease-in-out infinite;
+        animation-delay: 1.3s;
+      }
+      .glow-node-3 {
+        filter: url(#glow);
+        animation: pulse-3 4s ease-in-out infinite;
+        animation-delay: 2.6s;
+      }
+
+      @keyframes pulse-1 { 0%, 100% { opacity: 0.55; } 50% { opacity: 1; } }
+      @keyframes pulse-2 { 0%, 100% { opacity: 0.7; } 50% { opacity: 1; } }
+      @keyframes pulse-3 { 0%, 100% { opacity: 0.4; } 50% { opacity: 0.9; } }
     </style>
 
-    <!-- Filters and Gradients -->
-    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="4" result="blur" />
+    <!-- Glowing Filters -->
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="5" result="blur" />
       <feComposite in="SourceGraphic" in2="blur" operator="over" />
     </filter>
+    
+    <filter id="text-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="7" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
 
-    <radialGradient id="bg-glow" cx="50%" cy="50%" r="60%">
-      <stop offset="0%" stop-color="#7C3AED" stop-opacity="0.18"/>
-      <stop offset="100%" stop-color="#0D1117" stop-opacity="0"/>
+    <radialGradient id="bg-glow" cx="50%" cy="50%" r="65%">
+      <stop offset="0%" stop-color="#7C3AED" stop-opacity="0.22"/>
+      <stop offset="60%" stop-color="#090A0F" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#06070A" stop-opacity="1"/>
     </radialGradient>
 
-    <radialGradient id="center-flare" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#C084FC" stop-opacity="0.8"/>
-      <stop offset="20%" stop-color="#A855F7" stop-opacity="0.6"/>
+    <radialGradient id="center-flare" cx="50%" cy="50%" r="45%">
+      <stop offset="0%" stop-color="#C084FC" stop-opacity="0.85"/>
+      <stop offset="25%" stop-color="#A855F7" stop-opacity="0.6"/>
       <stop offset="100%" stop-color="#7C3AED" stop-opacity="0"/>
     </radialGradient>
 
     <linearGradient id="line-grad" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#A855F7" stop-opacity="0"/>
-      <stop offset="50%" stop-color="#A855F7" stop-opacity="1"/>
+      <stop offset="15%" stop-color="#A855F7" stop-opacity="0.5"/>
+      <stop offset="50%" stop-color="#C084FC" stop-opacity="1"/>
+      <stop offset="85%" stop-color="#A855F7" stop-opacity="0.5"/>
       <stop offset="100%" stop-color="#A855F7" stop-opacity="0"/>
     </linearGradient>
 
     <linearGradient id="node-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#C084FC"/>
-      <stop offset="100%" stop-color="#6D28D9"/>
+      <stop offset="0%" stop-color="#F3E8FF"/>
+      <stop offset="50%" stop-color="#C084FC"/>
+      <stop offset="100%" stop-color="#7C3AED"/>
     </linearGradient>
+
+    <!-- Grid pattern for background -->
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#7C3AED" stroke-opacity="0.04" stroke-width="1"/>
+    </pattern>
   </defs>
 
-  <!-- Background -->
-  <rect width="100%" height="100%" fill="#0D1117"/>
+  <!-- Background Layer -->
+  <rect width="100%" height="100%" fill="#090A0F"/>
   <rect width="100%" height="100%" fill="url(#bg-glow)"/>
+  <rect width="100%" height="100%" fill="url(#grid)"/>
 
-  <!-- Left Side: Graph Network -->
-  <g stroke="#7C3AED" stroke-width="1.5" opacity="0.35">
-    <line x1="150" y1="150" x2="80" y2="200" />
-    <line x1="150" y1="150" x2="220" y2="180" />
-    <line x1="150" y1="150" x2="120" y2="270" />
-    <line x1="80" y1="200" x2="120" y2="270" />
-    <line x1="80" y1="200" x2="110" y2="450" />
-    <line x1="220" y1="180" x2="280" y2="260" />
-    <line x1="220" y1="180" x2="170" y2="340" />
-    <line x1="120" y1="270" x2="280" y2="260" />
-    <line x1="120" y1="270" x2="170" y2="340" />
-    <line x1="120" y1="270" x2="110" y2="450" />
-    <line x1="280" y1="260" x2="170" y2="340" />
-    <line x1="280" y1="260" x2="220" y2="420" />
-    <line x1="170" y1="340" x2="220" y2="420" />
-    <line x1="220" y1="420" x2="110" y2="450" />
-    <!-- Additional outer connections -->
-    <line x1="150" y1="150" x2="280" y2="120" opacity="0.2"/>
-    <line x1="280" y1="260" x2="350" y2="300" opacity="0.2"/>
-    <line x1="220" y1="420" x2="300" y2="460" opacity="0.2"/>
+  <!-- Full-Screen Glowing Firefly Particles Backdrop (Rich 40-Particle Depth Field) -->
+  <g>
+    <!-- Group 1: Shifting & Size Pulsing Foreground Fireflies (Larger, glowing) -->
+    <circle cx="250" cy="120" r="4" fill="url(#node-grad)" class="glow-node-1">
+      <animate attributeName="cx" values="250;285;225;250" dur="18s" repeatCount="indefinite" />
+      <animate attributeName="cy" values="120;145;95;120" dur="22s" repeatCount="indefinite" />
+      <animate attributeName="r" values="3;5.5;3" dur="6s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.3;0.95;0.2;0.3" dur="6s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="600" cy="140" r="5" fill="url(#node-grad)" class="glow-node-2">
+      <animate attributeName="cx" values="600;630;570;600" dur="20s" repeatCount="indefinite" />
+      <animate attributeName="cy" values="140;115;165;140" dur="24s" repeatCount="indefinite" />
+      <animate attributeName="r" values="3.5;6.5;3.5" dur="7s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.4;1.0;0.3;0.4" dur="7s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="950" cy="130" r="3.5" fill="url(#node-grad)" class="glow-node-3">
+      <animate attributeName="cx" values="950;985;915;950" dur="19s" repeatCount="indefinite" />
+      <animate attributeName="cy" values="130;110;155;130" dur="23s" repeatCount="indefinite" />
+      <animate attributeName="r" values="2.5;5.0;2.5" dur="5s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.3;0.9;0.35;0.3" dur="5s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="180" cy="260" r="5" fill="url(#node-grad)" class="glow-node-1">
+      <animate attributeName="cx" values="180;210;150;180" dur="16s" repeatCount="indefinite" />
+      <animate attributeName="cy" values="260;235;285;260" dur="22s" repeatCount="indefinite" />
+      <animate attributeName="r" values="3.5;6.0;3.5" dur="8s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.35;1.0;0.25;0.35" dur="8s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="500" cy="280" r="4.5" fill="url(#node-grad)" class="glow-node-2">
+      <animate attributeName="cx" values="500;475;525;500" dur="25s" repeatCount="indefinite" />
+      <animate attributeName="cy" values="280;305;255;280" dur="20s" repeatCount="indefinite" />
+      <animate attributeName="r" values="3;5.8;3" dur="6s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.3;0.95;0.2;0.3" dur="6s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="850" cy="270" r="5.5" fill="url(#node-grad)" class="glow-node-3">
+      <animate attributeName="cx" values="850;820;880;850" dur="17s" repeatCount="indefinite" />
+      <animate attributeName="cy" values="270;295;245;270" dur="21s" repeatCount="indefinite" />
+      <animate attributeName="r" values="4;7.0;4" dur="9s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.4;1.0;0.3;0.4" dur="9s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="100" cy="380" r="5" fill="url(#node-grad)" class="glow-node-1">
+      <animate attributeName="cx" values="100;130;70;100" dur="18s" repeatCount="indefinite" />
+      <animate attributeName="cy" values="380;355;405;380" dur="23s" repeatCount="indefinite" />
+      <animate attributeName="r" values="3.5;6.2;3.5" dur="7s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.3;0.95;0.25;0.3" dur="7s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="580" cy="430" r="4.5" fill="url(#node-grad)" class="glow-node-2">
+      <animate attributeName="cx" values="580;555;605;580" dur="23s" repeatCount="indefinite" />
+      <animate attributeName="cy" values="430;405;455;430" dur="19s" repeatCount="indefinite" />
+      <animate attributeName="r" values="3;6.0;3" dur="8s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.35;0.95;0.25;0.35" dur="8s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="900" cy="410" r="5" fill="url(#node-grad)" class="glow-node-3">
+      <animate attributeName="cx" values="900;930;870;900" dur="18s" repeatCount="indefinite" />
+      <animate attributeName="cy" values="410;390;430;410" dur="24s" repeatCount="indefinite" />
+      <animate attributeName="r" values="3.5;6.5;3.5" dur="9s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.4;1.0;0.3;0.4" dur="9s" repeatCount="indefinite" />
+    </circle>
+
+    <!-- Group 2: Mid-ground Shifting Particles -->
+    <circle cx="150" cy="120" r="3" fill="url(#node-grad)" opacity="0.6">
+      <animate attributeName="cx" values="150;175;125;150" dur="20s" repeatCount="indefinite" />
+      <animate attributeName="cy" values="120;140;100;120" dur="16s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.2;0.8;0.2" dur="6s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="700" cy="100" r="2.5" fill="url(#node-grad)" opacity="0.5">
+      <animate attributeName="cx" values="700;680;720;700" dur="22s" repeatCount="indefinite" />
+      <animate attributeName="cy" values="100;120;80;100" dur="18s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.15;0.75;0.15" dur="7s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="50" cy="220" r="3" fill="url(#node-grad)" opacity="0.6">
+      <animate attributeName="cx" values="50;70;30;50" dur="21s" repeatCount="indefinite" />
+      <animate attributeName="cy" values="220;200;240;220" dur="17s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.2;0.85;0.2" dur="5s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="250" cy="300" r="2.5" fill="url(#node-grad)" opacity="0.5">
+      <animate attributeName="cx" values="250;230;270;250" dur="24s" repeatCount="indefinite" />
+      <animate attributeName="cy" values="300;320;280;300" dur="18s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.2;0.9;0.2" dur="8s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="680" cy="200" r="3" fill="url(#node-grad)" opacity="0.6">
+      <animate attributeName="cx" values="680;700;660;680" dur="19s" repeatCount="indefinite" />
+      <animate attributeName="cy" values="200;215;185;200" dur="23s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.25;0.85;0.25" dur="6s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="1150" cy="280" r="3.5" fill="url(#node-grad)" opacity="0.7">
+      <animate attributeName="cx" values="1150;1130;1170;1150" dur="21s" repeatCount="indefinite" />
+      <animate attributeName="cy" values="280;300;260;280" dur="19s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.3;0.9;0.3" dur="7s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="400" cy="350" r="3" fill="url(#node-grad)" opacity="0.6">
+      <animate attributeName="cx" values="400;415;385;400" dur="22s" repeatCount="indefinite" />
+      <animate attributeName="cy" values="350;335;365;350" dur="17s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.25;0.8;0.25" dur="6s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="750" cy="360" r="2.5" fill="url(#node-grad)" opacity="0.5">
+      <animate attributeName="cx" values="750;765;735;750" dur="20s" repeatCount="indefinite" />
+      <animate attributeName="cy" values="360;375;345;360" dur="18s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.2;0.8;0.2" dur="7s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="1180" cy="440" r="3" fill="url(#node-grad)" opacity="0.6">
+      <animate attributeName="cx" values="1180;1160;1200;1180" dur="18s" repeatCount="indefinite" />
+      <animate attributeName="cy" values="440;420;460;440" dur="15s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.25;0.85;0.25" dur="6s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="800" cy="80" r="3" fill="url(#node-grad)" opacity="0.6">
+      <animate attributeName="cx" values="800;780;820;800" dur="19s" repeatCount="indefinite" />
+      <animate attributeName="cy" values="80;95;65;80" dur="22s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.25;0.9;0.25" dur="7s" repeatCount="indefinite" />
+    </circle>
+
+    <!-- Group 3: Distant Background Micro-Stars (Tiny, slow drift, faint) -->
+    <circle cx="300" cy="80" r="1.5" fill="#C084FC" opacity="0.3">
+      <animate attributeName="cx" values="300;310;290;300" dur="28s" repeatCount="indefinite" />
+      <animate attributeName="cy" values="80;90;70;80" dur="24s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="1100" cy="80" r="1.5" fill="#C084FC" opacity="0.3">
+      <animate attributeName="cx" values="1100;1090;1110;1100" dur="30s" repeatCount="indefinite" />
+      <animate attributeName="cy" values="80;90;70;80" dur="26s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="320" cy="180" r="1.8" fill="#C084FC" opacity="0.3">
+      <animate attributeName="cx" values="320;330;310;320" dur="26s" repeatCount="indefinite" />
+      <animate attributeName="cy" values="180;190;170;180" dur="29s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="1020" cy="220" r="1.5" fill="#C084FC" opacity="0.3">
+      <animate attributeName="cx" values="1020;1010;1030;1020" dur="32s" repeatCount="indefinite" />
+      <animate attributeName="cy" values="220;210;230;220" dur="28s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="280" cy="400" r="1.5" fill="#C084FC" opacity="0.3">
+      <animate attributeName="cx" values="280;290;270;280" dur="27s" repeatCount="indefinite" />
+      <animate attributeName="cy" values="400;410;390;400" dur="31s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="1050" cy="380" r="1.8" fill="#C084FC" opacity="0.3">
+      <animate attributeName="cx" values="1050;1040;1060;1050" dur="29s" repeatCount="indefinite" />
+      <animate attributeName="cy" values="380;390;370;380" dur="27s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="200" cy="60" r="1.2" fill="#7C3AED" opacity="0.25" />
+    <circle cx="380" cy="110" r="1.5" fill="#7C3AED" opacity="0.25" />
+    <circle cx="540" cy="80" r="1.3" fill="#7C3AED" opacity="0.2" />
+    <circle cx="760" cy="130" r="1.6" fill="#7C3AED" opacity="0.25" />
+    <circle cx="870" cy="60" r="1.2" fill="#7C3AED" opacity="0.2" />
+    <circle cx="1030" cy="100" r="1.5" fill="#7C3AED" opacity="0.25" />
+    <circle cx="120" cy="190" r="1.5" fill="#7C3AED" opacity="0.25" />
+    <circle cx="290" cy="230" r="1.6" fill="#7C3AED" opacity="0.25" />
+    <circle cx="410" cy="270" r="1.3" fill="#7C3AED" opacity="0.2" />
+    <circle cx="590" cy="220" r="1.5" fill="#7C3AED" opacity="0.25" />
+    <circle cx="730" cy="180" r="1.2" fill="#7C3AED" opacity="0.2" />
+    <circle cx="920" cy="210" r="1.6" fill="#7C3AED" opacity="0.25" />
+    <circle cx="220" cy="340" r="1.5" fill="#7C3AED" opacity="0.25" />
+    <circle cx="340" cy="300" r="1.2" fill="#7C3AED" opacity="0.2" />
+    <circle cx="490" cy="330" r="1.6" fill="#7C3AED" opacity="0.25" />
+    <circle cx="670" cy="380" r="1.4" fill="#7C3AED" opacity="0.2" />
+    <circle cx="830" cy="330" r="1.7" fill="#7C3AED" opacity="0.25" />
   </g>
 
-  <!-- Left Side: Nodes -->
-  <g fill="url(#node-grad)">
-    <circle cx="150" cy="150" r="6" class="glow-node"/>
-    <circle cx="80" cy="200" r="5"/>
-    <circle cx="220" cy="180" r="5"/>
-    <circle cx="120" cy="270" r="6" class="glow-node"/>
-    <circle cx="280" cy="260" r="5"/>
-    <circle cx="170" cy="340" r="6" class="glow-node"/>
-    <circle cx="220" cy="420" r="5"/>
-    <circle cx="110" cy="450" r="5"/>
+  <!-- Micro-technical Metadata Labels -->
+  <g class="term-text" font-size="7" fill="#94A3B8" opacity="0.3" letter-spacing="0.5">
+    <text x="50" y="115" text-anchor="start">AMBIENT_FIELD // RICH_DENSITY</text>
+    <text x="50" y="125" text-anchor="start">PARTICLE_COUNT // 0x28</text>
   </g>
 
   <!-- Decorative Dot Matrix (Bottom Left) -->
-  <g fill="#94A3B8" opacity="0.15">
-    <circle cx="80" cy="370" r="2"/>
-    <circle cx="95" cy="370" r="2"/>
-    <circle cx="110" cy="370" r="2"/>
-    <circle cx="125" cy="370" r="2"/>
+  <g fill="#A855F7" opacity="0.2">
+    <circle cx="70" cy="350" r="1.5"/>
+    <circle cx="85" cy="350" r="1.5"/>
+    <circle cx="100" cy="350" r="1.5"/>
+    <circle cx="115" cy="350" r="1.5"/>
     
-    <circle cx="80" cy="385" r="2"/>
-    <circle cx="95" cy="385" r="2"/>
-    <circle cx="110" cy="385" r="2"/>
-    <circle cx="125" cy="385" r="2"/>
+    <circle cx="70" cy="365" r="1.5"/>
+    <circle cx="85" cy="365" r="1.5"/>
+    <circle cx="100" cy="365" r="1.5"/>
+    <circle cx="115" cy="365" r="1.5"/>
     
-    <circle cx="80" cy="400" r="2"/>
-    <circle cx="95" cy="400" r="2"/>
-    <circle cx="110" cy="400" r="2"/>
-    <circle cx="125" cy="400" r="2"/>
+    <circle cx="70" cy="380" r="1.5"/>
+    <circle cx="85" cy="380" r="1.5"/>
+    <circle cx="100" cy="380" r="1.5"/>
+    <circle cx="115" cy="380" r="1.5"/>
 
-    <circle cx="80" cy="415" r="2"/>
-    <circle cx="95" cy="415" r="2"/>
-    <circle cx="110" cy="415" r="2"/>
-    <circle cx="125" cy="415" r="2"/>
+    <circle cx="70" cy="395" r="1.5"/>
+    <circle cx="85" cy="395" r="1.5"/>
+    <circle cx="100" cy="395" r="1.5"/>
+    <circle cx="115" cy="395" r="1.5"/>
   </g>
 
-  <!-- Top Left: Terminal Prompt -->
-  <g class="term-text" transform="translate(80, 80)">
-    <text x="0" y="0" fill="#A855F7" font-size="24" font-weight="bold">&gt;_</text>
-    <text x="35" y="-3" fill="#94A3B8" font-size="13" opacity="0.6">// keep building</text>
+  <!-- Top Left: Terminal Mockup -->
+  <g class="term-text" transform="translate(60, 60)">
+    <rect width="260" height="40" rx="6" fill="#0D1117" stroke="#7C3AED" stroke-opacity="0.3" stroke-width="1" />
+    <circle cx="15" cy="20" r="4" fill="#EF4444" />
+    <circle cx="27" cy="20" r="4" fill="#F59E0B" />
+    <circle cx="39" cy="20" r="4" fill="#10B981" />
+    <text x="60" y="24" fill="#A855F7" font-size="14" font-weight="bold">&gt;<tspan class="cursor-blink">_</tspan></text>
+    <text x="82" y="24" fill="#C084FC" font-size="12" font-weight="bold">keep_building.py</text>
   </g>
 
-  <!-- Top Center: Code Hexagon and Line -->
-  <g stroke="#7C3AED" stroke-width="1" opacity="0.4">
-    <line x1="420" y1="85" x2="570" y2="85" />
-    <line x1="630" y1="85" x2="780" y2="85" />
-    <circle cx="420" cy="85" r="3" fill="#7C3AED"/>
-    <circle cx="780" cy="85" r="3" fill="#7C3AED"/>
+  <!-- Top Center: Glowing Code Hexagon -->
+  <g stroke="#7C3AED" stroke-width="1.2" opacity="0.5">
+    <line x1="390" y1="80" x2="560" y2="80" />
+    <line x1="640" y1="80" x2="810" y2="80" />
+    <circle cx="390" cy="80" r="2.5" fill="#7C3AED"/>
+    <circle cx="810" cy="80" r="2.5" fill="#7C3AED"/>
   </g>
-  <g transform="translate(600, 85)">
-    <!-- Hexagon path -->
-    <path d="M 0 -22 L 19 -11 L 19 11 L 0 22 L -19 11 L -19 -11 Z" fill="#0D1117" stroke="#A855F7" stroke-width="1.5"/>
-    <text class="term-text" x="0" y="4" fill="#C084FC" font-size="13" text-anchor="middle" font-weight="bold">&lt;/&gt;</text>
-  </g>
-
-  <!-- Right Side: Binary Grid -->
-  <g class="term-text" font-size="12" fill="#94A3B8" opacity="0.18" text-anchor="end">
-    <text x="1120" y="90">0101010100101</text>
-    <text x="1120" y="108">1010101001010</text>
-    <text x="1120" y="126">0101010100101</text>
+  <g transform="translate(600, 80)">
+    <path d="M 0 -22 L 19 -11 L 19 11 L 0 22 L -19 11 L -19 -11 Z" fill="#090A0F" stroke="#A855F7" stroke-width="1.8" class="glow-node"/>
+    <text class="term-text" x="0" y="4" fill="#F3F4F6" font-size="12" text-anchor="middle" font-weight="bold">&lt;/&gt;</text>
   </g>
 
-  <!-- Right Side: Circuit Traces -->
-  <g stroke="#7C3AED" stroke-width="1.5" fill="none" opacity="0.25">
-    <path d="M 1120 200 L 1070 200 L 1040 230 L 980 230" />
-    <path d="M 1120 280 L 1090 280 L 1060 250 L 1020 250" />
-    <path d="M 1120 340 L 1060 340 L 1030 310 L 950 310" />
-    <circle cx="980" cy="230" r="2.5" fill="#7C3AED"/>
-    <circle cx="1020" cy="250" r="2.5" fill="#7C3AED"/>
-    <circle cx="950" cy="310" r="2.5" fill="#7C3AED"/>
+  <!-- Right Side: Binary Grid Background -->
+  <g class="term-text" font-size="11" fill="#A855F7" opacity="0.15" text-anchor="end">
+    <text x="1140" y="90">0101010100101</text>
+    <text x="1140" y="108">1010101001010</text>
+    <text x="1140" y="126">0101010100101</text>
+    <text x="1140" y="144">1100110011001</text>
   </g>
 
-  <!-- Center Title: SUMIRAN AKRE -->
-  <text class="sans-text" x="600" y="195" font-size="54" font-weight="800" fill="#F3F4F6" text-anchor="middle" letter-spacing="14">SUMIRAN AKRE</text>
 
-  <!-- Central Glowing Line -->
-  <line x1="300" y1="240" x2="900" y2="240" stroke="url(#line-grad)" stroke-width="2"/>
-  <ellipse cx="600" cy="240" rx="30" ry="3" fill="url(#center-flare)"/>
+
+  <!-- Center Title: SUMIRANN -->
+  <g class="sans-text">
+    <text x="600" y="195" font-size="58" font-weight="900" fill="#F3F4F6" text-anchor="middle" letter-spacing="16" class="glow-text">SUMIRANN</text>
+  </g>
+
+  <!-- Central Glowing Line & Flare -->
+  <line x1="260" y1="240" x2="940" y2="240" stroke="url(#line-grad)" stroke-width="2.5"/>
+  <ellipse cx="600" cy="240" rx="45" ry="3.5" fill="url(#center-flare)"/>
 
   <!-- Subtitle -->
-  <text class="sans-text" x="600" y="295" font-size="18" font-weight="500" fill="#C084FC" text-anchor="middle" letter-spacing="3">Computer Science Undergraduate</text>
+  <text class="sans-text" x="600" y="295" font-size="16" font-weight="600" fill="#C084FC" text-anchor="middle" letter-spacing="4">COMPUTER SCIENCE UNDERGRADUATE</text>
 
   <!-- Sub-subtitle -->
-  <text class="sans-text" x="600" y="340" font-size="22" font-weight="600" fill="#F3F4F6" text-anchor="middle" letter-spacing="0.5">Building Practical Software &amp; AI Applications</text>
+  <text class="sans-text" x="600" y="340" font-size="22" font-weight="700" fill="#E2E8F0" text-anchor="middle" letter-spacing="0.5">Building Practical Software &amp; AI Agent Systems</text>
 
   <!-- Pill Container -->
-  <rect x="360" y="380" width="480" height="46" rx="23" fill="none" stroke="#7C3AED" stroke-width="1.5" opacity="0.5" />
-  <text class="sans-text" x="600" y="408" font-size="15" font-weight="500" fill="#E2E8F0" text-anchor="middle" letter-spacing="0.8">
-    Learning C++ <tspan fill="#A855F7"> • </tspan> DSA <tspan fill="#A855F7"> • </tspan> Competitive Programming
+  <rect x="330" y="380" width="540" height="46" rx="23" fill="#0D1117" stroke="#7C3AED" stroke-opacity="0.4" stroke-width="1.5" />
+  <text class="sans-text" x="600" y="408" font-size="14" font-weight="600" fill="#F3F4F6" text-anchor="middle" letter-spacing="0.8">
+    C++ <tspan fill="#A855F7">•</tspan> DSA <tspan fill="#A855F7">•</tspan> Python Backend <tspan fill="#A855F7">•</tspan> AI Workflows
   </text>
 
-  <!-- Bottom Right: Commit History Graphic -->
-  <g transform="translate(860, 410)">
-    <!-- Commit history labels -->
-    <text class="term-text" x="140" y="32" fill="#94A3B8" font-size="11" opacity="0.5" text-anchor="end">commit history</text>
-    
-    <!-- Squares represent Git activity -->
-    <rect x="30" y="5" width="12" height="12" rx="2" fill="#7C3AED" opacity="0.3" />
-    <rect x="46" y="5" width="12" height="12" rx="2" fill="#7C3AED" opacity="0.8" />
-    <rect x="62" y="5" width="12" height="12" rx="2" fill="#7C3AED" opacity="0.2" />
-    <rect x="78" y="5" width="12" height="12" rx="2" fill="#7C3AED" opacity="0.9" />
-    <rect x="94" y="5" width="12" height="12" rx="2" fill="#7C3AED" opacity="0.5" />
-    <rect x="110" y="5" width="12" height="12" rx="2" fill="#7C3AED" opacity="0.1" />
-    <rect x="126" y="5" width="12" height="12" rx="2" fill="#7C3AED" opacity="0.7" />
-    <rect x="142" y="5" width="12" height="12" rx="2" fill="#7C3AED" opacity="0.4" />
+  <!-- Bottom Right: Dynamic Git Commit Graph Motif -->
+  <g transform="translate(930, 420)">
+    <text class="term-text" x="120" y="-8" fill="#94A3B8" font-size="11" opacity="0.5" text-anchor="end">commit history</text>
+    <g fill="#A855F7">
+      <rect x="10" y="0" width="11" height="11" rx="2.2" opacity="0.2" />
+      <rect x="25" y="0" width="11" height="11" rx="2.2" opacity="0.65" />
+      <rect x="40" y="0" width="11" height="11" rx="2.2" opacity="0.3" />
+      <rect x="55" y="0" width="11" height="11" rx="2.2" opacity="0.9" />
+      <rect x="70" y="0" width="11" height="11" rx="2.2" opacity="0.5" />
+      <rect x="85" y="0" width="11" height="11" rx="2.2" opacity="0.1" />
+      <rect x="100" y="0" width="11" height="11" rx="2.2" opacity="0.8" />
+      <rect x="115" y="0" width="11" height="11" rx="2.2" opacity="0.4" />
+    </g>
   </g>
 </svg>

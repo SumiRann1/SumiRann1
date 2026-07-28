@@ -1,0 +1,127 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 160" width="100%" height="100%">
+  <defs>
+    <style type="text/css">
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap');
+      .sans-title {
+        font-family: 'Inter', sans-serif;
+        font-weight: 700;
+        fill: #F3F4F6;
+      }
+      .sans-desc {
+        font-family: 'Inter', sans-serif;
+        font-weight: 400;
+        fill: #94A3B8;
+      }
+      .tech-badge {
+        font-family: 'JetBrains Mono', monospace;
+        font-weight: 700;
+        font-size: 11px;
+        fill: #C084FC;
+      }
+      .badge-bg {
+        fill: #7C3AED;
+        fill-opacity: 0.15;
+        stroke: #A855F7;
+        stroke-opacity: 0.4;
+        stroke-width: 1;
+      }
+      @keyframes signal-flow {
+        to {
+          stroke-dashoffset: -20;
+        }
+      }
+      .flow-path {
+        stroke-dasharray: 4, 4;
+        animation: signal-flow 1s linear infinite;
+      }
+    </style>
+    
+    <linearGradient id="border-glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#A855F7" stop-opacity="0.8"/>
+      <stop offset="30%" stop-color="#7C3AED" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#0D1117" stop-opacity="0.1"/>
+    </linearGradient>
+
+    <radialGradient id="left-glow" cx="10%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#7C3AED" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#0D1117" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Card Background -->
+  <rect x="2" y="2" width="1196" height="156" rx="8" fill="#0D1117" stroke="url(#border-glow)" stroke-width="1.5"/>
+  <rect x="2" y="2" width="1196" height="156" rx="8" fill="url(#left-glow)" />
+
+  <!-- Right Side Graphic: Agent Planner Flow -->
+  <g stroke="#7C3AED" stroke-width="1.5" fill="none" opacity="0.4" transform="translate(1015, 30)">
+    <!-- Planning / Agent loop -->
+    <path d="M 20 50 L 50 20 L 110 20 L 140 50 L 110 80 L 50 80 Z" stroke-dasharray="2 2" />
+    <path d="M 50 20 L 110 80" class="flow-path" />
+    <path d="M 110 20 L 50 80" class="flow-path" />
+    
+    <!-- Nodes -->
+    <circle cx="20" cy="50" r="10" fill="#0D1117" stroke="#A855F7" stroke-width="2"/>
+    <circle cx="50" cy="20" r="10" fill="#0D1117" stroke="#7C3AED" stroke-width="1.5"/>
+    <circle cx="110" cy="20" r="10" fill="#0D1117" stroke="#7C3AED" stroke-width="1.5"/>
+    <circle cx="140" cy="50" r="10" fill="#0D1117" stroke="#A855F7" stroke-width="2"/>
+    <circle cx="110" cy="80" r="10" fill="#0D1117" stroke="#7C3AED" stroke-width="1.5"/>
+    <circle cx="50" cy="80" r="10" fill="#0D1117" stroke="#7C3AED" stroke-width="1.5"/>
+    
+    <!-- Inner design details -->
+    <circle cx="20" cy="50" r="4" fill="#C084FC"/>
+    <circle cx="140" cy="50" r="4" fill="#C084FC"/>
+
+    <!-- Small labels -->
+    <text font-family="JetBrains Mono" font-size="7" font-weight="bold" fill="#94A3B8" x="20" y="35" text-anchor="middle">PLAN</text>
+    <text font-family="JetBrains Mono" font-size="7" font-weight="bold" fill="#94A3B8" x="140" y="35" text-anchor="middle">HITL</text>
+  </g>
+
+  <!-- Left Icon: Graduation Cap + Network Nodes -->
+  <g transform="translate(50, 80)">
+    <circle cx="0" cy="0" r="22" fill="none" stroke="#7C3AED" stroke-width="2" opacity="0.3"/>
+    <!-- Graduation Cap / Scholar outline -->
+    <path d="M 0 -10 L 14 -3 L 0 4 L -14 -3 Z" fill="none" stroke="#A855F7" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M -8 -1 L -8 7 Q 0 11 8 7 L 8 -1" fill="none" stroke="#A855F7" stroke-width="1.8" stroke-linejoin="round"/>
+    <!-- Tassel -->
+    <path d="M 5 -3 L 11 3 L 11 9" fill="none" stroke="#C084FC" stroke-width="1.5"/>
+    <circle cx="11" cy="9" r="1.5" fill="#C084FC"/>
+  </g>
+
+  <!-- Project Info -->
+  <g transform="translate(120, 48)">
+    <!-- Title -->
+    <text class="sans-title" x="0" y="0" font-size="24" letter-spacing="1">CAMPUS_X</text>
+    <text class="sans-desc" x="170" y="-2" font-size="13" opacity="0.8">// LangGraph Academic Advisor Agent</text>
+    
+    <!-- Description -->
+    <text class="sans-desc" x="0" y="26" font-size="13.5">Advanced agentic course assistant featuring triple search (JSON, RAG, Location),</text>
+    <text class="sans-desc" x="0" y="44" font-size="13.5">dual-tier guardrails, and interactive Human-in-the-Loop validation.</text>
+
+    <!-- Badges -->
+    <g transform="translate(0, 64)">
+      <!-- Python -->
+      <rect class="badge-bg" x="0" y="0" width="70" height="22" rx="4" />
+      <text class="tech-badge" x="35" y="15" text-anchor="middle">PYTHON</text>
+
+      <!-- LangGraph -->
+      <rect class="badge-bg" x="80" y="0" width="95" height="22" rx="4" />
+      <text class="tech-badge" x="127.5" y="15" text-anchor="middle">LANGGRAPH</text>
+
+      <!-- RAG -->
+      <rect class="badge-bg" x="185" y="0" width="50" height="22" rx="4" />
+      <text class="tech-badge" x="210" y="15" text-anchor="middle">RAG</text>
+
+      <!-- Groq -->
+      <rect class="badge-bg" x="245" y="0" width="55" height="22" rx="4" />
+      <text class="tech-badge" x="272.5" y="15" text-anchor="middle">GROQ</text>
+    </g>
+  </g>
+
+  <!-- Right side stats/details badge -->
+  <g transform="translate(780, 45)" opacity="0.8">
+    <rect x="0" y="0" width="210" height="70" rx="6" fill="#090A0F" stroke="#7C3AED" stroke-width="1" opacity="0.6"/>
+    <!-- Details -->
+    <text class="tech-badge" x="20" y="25" font-size="12">STATUS: Active</text>
+    <text class="sans-desc" x="20" y="48" font-size="11" fill="#C084FC">HITL planning &amp; search loop</text>
+  </g>
+</svg>

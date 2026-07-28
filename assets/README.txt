@@ -1,1 +1,0 @@
-Replace banner.png with the final Purple Graph banner we designed. GitHub Actions files may require small updates if action versions change.

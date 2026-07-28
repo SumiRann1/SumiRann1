@@ -25,6 +25,15 @@
         stroke-opacity: 0.4;
         stroke-width: 1;
       }
+      @keyframes signal-flow {
+        to {
+          stroke-dashoffset: -20;
+        }
+      }
+      .flow-path {
+        stroke-dasharray: 4, 4;
+        animation: signal-flow 1s linear infinite;
+      }
     </style>
     
     <linearGradient id="border-glow" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -44,10 +53,10 @@
   <rect x="2" y="2" width="1196" height="156" rx="8" fill="url(#left-glow)" />
 
   <!-- Right Side: Binary Tree Graphic -->
-  <g stroke="#7C3AED" stroke-width="1.5" fill="none" opacity="0.4" transform="translate(1000, 30)">
+  <g stroke="#7C3AED" stroke-width="1.5" fill="none" opacity="0.4" transform="translate(1055, 30)">
     <!-- Branches -->
-    <line x1="50" y1="20" x2="20" y2="70" />
-    <line x1="50" y1="20" x2="80" y2="70" />
+    <line x1="50" y1="20" x2="20" y2="70" class="flow-path" />
+    <line x1="50" y1="20" x2="80" y2="70" class="flow-path" />
     
     <!-- Nodes -->
     <circle cx="50" cy="20" r="16" fill="#0D1117" stroke="#A855F7" stroke-width="2"/>
@@ -72,13 +81,14 @@
   <g transform="translate(120, 48)">
     <!-- Title -->
     <text class="sans-title" x="0" y="0" font-size="24" letter-spacing="1">DSA-JOURNEY</text>
-    <text class="sans-desc" x="175" y="-2" font-size="13" opacity="0.8">// Algorithms &amp; Competitive Programming</text>
+    <text class="sans-desc" x="215" y="-2" font-size="13" opacity="0.8">// Algorithms &amp; Competitive Programming</text>
     
     <!-- Description -->
-    <text class="sans-desc" x="0" y="32" font-size="14">Structured notes, clean C++ templates, design patterns, and efficient implementations of algorithms for platform prep and Codeforces training.</text>
+    <text class="sans-desc" x="0" y="26" font-size="13.5">Structured notes, clean C++ templates, design patterns, and efficient</text>
+    <text class="sans-desc" x="0" y="44" font-size="13.5">implementations of algorithms for platform prep and Codeforces training.</text>
 
     <!-- Badges -->
-    <g transform="translate(0, 56)">
+    <g transform="translate(0, 64)">
       <!-- C++ -->
       <rect class="badge-bg" x="0" y="0" width="55" height="22" rx="4" />
       <text class="tech-badge" x="27.5" y="15" text-anchor="middle">C++</text>
@@ -98,11 +108,10 @@
   </g>
 
   <!-- Right side stats/details badge -->
-  <g transform="translate(900, 45)" opacity="0.8">
-    <!-- Card inside card -->
-    <rect x="0" y="0" width="240" height="70" rx="6" fill="#090A0F" stroke="#7C3AED" stroke-width="1" opacity="0.6"/>
+  <g transform="translate(790, 45)" opacity="0.8">
+    <rect x="0" y="0" width="230" height="70" rx="6" fill="#090A0F" stroke="#7C3AED" stroke-width="1" opacity="0.6"/>
     <!-- Details -->
     <text class="tech-badge" x="20" y="25" font-size="12">REPOSITORY: Public</text>
-    <text class="sans-desc" x="20" y="48" font-size="11" fill="#C084FC">Topic notes &amp; CF contest solutions</text>
+    <text class="sans-desc" x="20" y="48" font-size="11" fill="#C084FC">Contest solutions &amp; templates</text>
   </g>
 </svg>
