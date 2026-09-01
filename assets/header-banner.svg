@@ -1,0 +1,103 @@
+<svg fill="none" viewBox="0 0 850 200" width="100%" height="200" xmlns="http://www.w3.org/2000/svg">
+  <foreignObject width="100%" height="100%">
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <style>
+        .container {
+          font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          height: 198px;
+          background: linear-gradient(135deg, #0b0f19 0%, #111827 50%, #0d1117 100%);
+          border-radius: 16px;
+          border: 1px solid rgba(139, 92, 246, 0.3);
+          box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7), 0 0 20px rgba(124, 58, 237, 0.15);
+          position: relative;
+          overflow: hidden;
+          color: #f3f4f6;
+          text-align: center;
+          padding: 0 20px;
+        }
+
+        .bg-glow {
+          position: absolute;
+          width: 300px;
+          height: 300px;
+          border-radius: 50%;
+          filter: blur(80px);
+          opacity: 0.25;
+          pointer-events: none;
+        }
+
+        .glow-1 {
+          top: -100px;
+          left: -50px;
+          background: #8b5cf6;
+        }
+
+        .glow-2 {
+          bottom: -100px;
+          right: -50px;
+          background: #06b6d4;
+        }
+
+        .title {
+          font-size: 38px;
+          font-weight: 800;
+          letter-spacing: 2px;
+          background: linear-gradient(90deg, #a78bfa 0%, #38bdf8 50%, #34d399 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          margin-bottom: 8px;
+          text-shadow: 0 0 30px rgba(167, 139, 250, 0.3);
+        }
+
+        .subtitle {
+          font-size: 16px;
+          color: #9ca3af;
+          font-weight: 500;
+          letter-spacing: 1.5px;
+          text-transform: uppercase;
+          margin-bottom: 16px;
+        }
+
+        .tags {
+          display: flex;
+          gap: 12px;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .tag {
+          font-size: 12px;
+          font-weight: 600;
+          padding: 4px 14px;
+          border-radius: 20px;
+          background: rgba(255, 255, 255, 0.05);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          color: #d1d5db;
+          backdrop-filter: blur(4px);
+        }
+
+        .tag-accent {
+          border-color: rgba(139, 92, 246, 0.4);
+          color: #c4b5fd;
+          background: rgba(139, 92, 246, 0.1);
+        }
+      </style>
+      <div class="container">
+        <div class="bg-glow glow-1"></div>
+        <div class="bg-glow glow-2"></div>
+        <div class="title">SUMIRAN (SumiRann1)</div>
+        <div class="subtitle">AI Agents Specialist • LLM Engineer • Full-Stack Developer</div>
+        <div class="tags">
+          <span class="tag tag-accent">🤖 AI &amp; Agents Mentorship @ IIT Bhilai</span>
+          <span class="tag">🧠 LLMs &amp; PyTorch</span>
+          <span class="tag">⚡ Python &amp; Streamlit</span>
+          <span class="tag">🌐 Web Architecture</span>
+        </div>
+      </div>
+    </div>
+  </foreignObject>
+</svg>

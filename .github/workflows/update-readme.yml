@@ -1,0 +1,22 @@
+name: Daily Profile Keep-Alive & Auto Update
+
+on:
+  schedule:
+    - cron: "0 12 * * 1" # Every Monday at 12:00 UTC
+  workflow_dispatch:
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Touch keep-alive timestamp
+        run: |
+          echo "<!-- Last automated check: $(date -u) -->" >> README.md
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git diff-index --quiet HEAD || git commit -m "chore(profile): daily dynamic refresh [skip ci]"
+          git push
