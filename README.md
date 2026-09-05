@@ -212,33 +212,16 @@ I'm **Sumiran** — an **AI & Backend Developer** passionate about building **Ag
 
 <div align="center">
 
-  <!-- GitHub Activity Graph -->
-  <a href="https://github.com/SumiRann1">
-    <img src="https://github-readme-activity-graph.vercel.app/graph?username=SumiRann1&theme=tokyo-night&hide_border=true&area=true" alt="Sumiran's Activity Graph" width="100%" />
-  </a>
-
-  <br/><br/>
-
   <!-- GitHub Stats & Streak -->
-  <img src="https://github-readme-stats.vercel.app/api?username=SumiRann1&show_icons=true&theme=tokyonight&hide_border=true&count_private=true" alt="Sumiran's GitHub Stats" width="48%" />
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=SumiRann1&theme=github_dark" alt="Sumiran's GitHub Stats" width="48%" />
   <img src="https://github-readme-streak-stats.herokuapp.com/?user=SumiRann1&theme=tokyonight&hide_border=true" alt="Sumiran's GitHub Streak" width="48%" />
 
   <br/><br/>
 
-  <!-- Top Languages -->
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=SumiRann1&layout=compact&theme=tokyonight&hide_border=true" alt="Top Languages" width="48%" />
+  <!-- Top Languages & Productive Time -->
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=SumiRann1&theme=github_dark" alt="Top Languages" width="48%" />
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=SumiRann1&theme=github_dark" alt="Productive Time" width="48%" />
 
-</div>
-
----
-
-<!-- ============================================================ -->
-<!--                       GITHUB TROPHIES                        -->
-<!-- ============================================================ -->
-## 🏆 GitHub Trophies
-
-<div align="center">
-  <img src="https://github-profile-trophy.vercel.app/?username=SumiRann1&theme=darkhub&no-frame=true&column=6&margin-w=10" alt="GitHub Trophies" />
 </div>
 
 ---
