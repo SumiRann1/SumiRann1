@@ -64,7 +64,7 @@
 
         .tags {
           display: flex;
-          gap: 12px;
+          gap: 10px;
           flex-wrap: wrap;
           justify-content: center;
         }
@@ -90,12 +90,13 @@
         <div class="bg-glow glow-1"></div>
         <div class="bg-glow glow-2"></div>
         <div class="title">SUMIRAN (SumiRann1)</div>
-        <div class="subtitle">AI Agents Specialist • LLM Engineer • Full-Stack Developer</div>
+        <div class="subtitle">Computer Science @ IIT Bhilai • Building Intelligent Systems</div>
         <div class="tags">
-          <span class="tag tag-accent">🤖 AI &amp; Agents Mentorship @ IIT Bhilai</span>
-          <span class="tag">🧠 LLMs &amp; PyTorch</span>
-          <span class="tag">⚡ Python &amp; Streamlit</span>
-          <span class="tag">🌐 Web Architecture</span>
+          <span class="tag tag-accent">🎓 CS @ IIT Bhilai</span>
+          <span class="tag">🤖 Agentic AI Systems</span>
+          <span class="tag">⚡ Backend &amp; Infrastructure</span>
+          <span class="tag">❄️ Arch Linux &amp; Hyprland</span>
+          <span class="tag">🧩 DSA &amp; CP</span>
         </div>
       </div>
     </div>
