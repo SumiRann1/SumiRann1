@@ -32,7 +32,7 @@
 
 ## 👋 Who I Am
 
-I'm **Sumiran** — an **AI & Backend Developer** passionate about building **Agentic AI systems**, intelligent multi-agent workflows, deep learning models, and responsive applications.
+I'm **Sumirann** — an **AI & Backend Developer** passionate about building **Agentic AI systems**, intelligent multi-agent workflows, deep learning models, and responsive applications.
 
 - 🎓 **Mentorship & AI Research:** Conducting 8-week AI Agents mentorship under **DevLabs 2.0** at **IIT Bhilai**.
 - 🤖 **Flagship Project:** Architecting **StudentOS** — an all-in-one smart AI platform powered by **LangGraph multi-agent orchestrators**, email processing graphs, and timetable management.
@@ -270,7 +270,7 @@ I'm **Sumiran** — an **AI & Backend Developer** passionate about building **Ag
   <a href="https://github.com/SumiRann1">
     <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"/>
   </a>
-  <a href="mailto:sumiran.dev@example.com">
+  <a href="mailto:akresumiran@gmail.com">
     <img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email"/>
   </a>
 
